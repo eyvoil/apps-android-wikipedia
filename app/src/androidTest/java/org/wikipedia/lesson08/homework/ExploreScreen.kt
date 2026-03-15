@@ -3,6 +3,8 @@ package org.wikipedia.lesson08.homework
 import com.kaspersky.kaspresso.screens.KScreen
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerView
+import io.github.kakaocup.kakao.text.KButton
+import io.github.kakaocup.kakao.text.KTextView
 import org.wikipedia.R
 import org.wikipedia.feed.view.FeedView
 
@@ -25,4 +27,12 @@ object ExploreScreen : KScreen<ExploreScreen>() {
             itemType(::FeaturedArticlesItem)
         }
     )
+
+    val cannotLoadText = KTextView {
+        withText(R.string.view_offline_card_text)
+    }
+
+    val retryButton = KButton {
+        withText(R.string.article_load_error_retry)
+    }
 }
