@@ -1,6 +1,7 @@
 package org.wikipedia.lesson08.homework
 
 import com.kaspersky.kaspresso.screens.KScreen
+import io.github.kakaocup.kakao.edit.KEditText
 import io.github.kakaocup.kakao.image.KImageView
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
@@ -14,6 +15,10 @@ object ExploreScreen : KScreen<ExploreScreen>() {
 
     val logo = KImageView {
         withId(R.id.main_toolbar_wordmark)
+    }
+
+    val searchField = KEditText {
+        withText(R.string.search_hint)
     }
 
     val cardsList = KRecyclerView(
