@@ -8,9 +8,10 @@ import io.github.kakaocup.kakao.text.KTextView
 import org.wikipedia.R
 import org.wikipedia.feed.view.FeedView
 import org.wikipedia.lesson18.homework.NamedScreen
+import org.wikipedia.lesson18.homework.invokeWithText
 import org.wikipedia.lesson18.homework.name
 
-object ExploreNamedScreen : NamedScreen<ExploreNamedScreen>() {
+object ExploreNamedScreen: NamedScreen<ExploreNamedScreen>() {
 
     override val screenName = "Экран Explore"
     override val layoutId: Int? = R.layout.fragment_feed
@@ -43,4 +44,13 @@ object ExploreNamedScreen : NamedScreen<ExploreNamedScreen>() {
     val retryButton = KButton {
         withText(R.string.article_load_error_retry)
     }.name(withParent("Кнопка Retry"))
+
+    fun topReadBlock(fnc: TopReadNamedItem.() -> Unit) {
+        cardsList.invokeWithText("Top read", fnc)
+    }
+
+    val menuButton = KButton {
+        withId(com.google.android.material.R.id.navigation_bar_item_small_label_view)
+        withText(R.string.nav_item_more)
+    }.name(withParent("Кнопка More"))
 }
