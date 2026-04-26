@@ -10,9 +10,7 @@ import org.wikipedia.R
 import org.wikipedia.lesson08.homework.ExploreScreen.cardsList
 import org.wikipedia.lesson08.homework.FeaturedArticlesItem
 import org.wikipedia.lesson18.homework.ExploreNamedScreen.ExploreNamedScreen
-import org.wikipedia.lesson18.homework.ExploreNamedScreen.FeaturedArticlesNamedItem
 import org.wikipedia.lesson18.homework.OnboardingNamedScreen.OnboardingNamedScreen
-import org.wikipedia.lesson18.homework.invokeWithText
 import org.wikipedia.lesson19.homework.action
 import org.wikipedia.lesson19.homework.verify
 import org.wikipedia.main.MainActivity
@@ -33,7 +31,7 @@ class WidgetTest : TestCase(Kaspresso.Builder.withForcedAllureSupport()) {
                     withDescendant { withText(R.string.view_featured_article_card_title) }
                 } perform {
                     isDisplayed()
-                    title.click()
+                    click()
                 }
             }
 
@@ -48,13 +46,15 @@ class WidgetTest : TestCase(Kaspresso.Builder.withForcedAllureSupport()) {
 
             BottomSheet {
                 textSizeSettingWidget {
-                    verify.isDisplayed(this)
+                    isDisplayed()
                     action.click(increaseSizeButton)
-                    verify.hasText(textSizePercent, "110%")
-                    action.click(decreaseSizeButton)
-                    action.click(decreaseSizeButton)
-                    verify.hasText(textSizePercent, "90%")
 
+                    verify.hasText(textSizePercent, "110%")
+
+                    action.click(decreaseSizeButton)
+                    action.click(decreaseSizeButton)
+
+                    verify.hasText(textSizePercent, "90%")
                 }
             }
         }
@@ -67,9 +67,11 @@ class WidgetTest : TestCase(Kaspresso.Builder.withForcedAllureSupport()) {
             action.click(OnboardingNamedScreen.skipButton)
 
             ExploreNamedScreen.cardsList {
-                invokeWithText<FeaturedArticlesNamedItem>("Featured article") {
-                    title.isDisplayed()
-                    title.click()
+                cardsList.childWith<FeaturedArticlesItem> {
+                    withDescendant { withText(R.string.view_featured_article_card_title) }
+                } perform {
+                    isDisplayed()
+                    click()
                 }
             }
 
@@ -84,11 +86,11 @@ class WidgetTest : TestCase(Kaspresso.Builder.withForcedAllureSupport()) {
 
             BottomSheet {
                 themeWidget {
-                    verify.isDisplayed(this)
+                    isDisplayed()
                     action.swipeSwitchLeft(themeSwitch)
                     verify.isDisplayed(themeDarkButton)
                     action.swipeSwitchRight(themeSwitch)
-                    verify.doesNotExist(themeDarkButton)
+                    themeDarkButton.isDisabled()
                 }
             }
         }

@@ -2,8 +2,10 @@ package org.wikipedia.lesson19.homework
 
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
+import io.github.kakaocup.kakao.image.ImageViewAssertions
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.wikipedia.lesson18.homework.getName
+import org.wikipedia.lesson23.homework.KWebViewElement
 
 // Шаги проверок
 class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
@@ -11,6 +13,13 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
     override val self = this
 
     fun isDisplayed(element: BaseAssertions) {
+        steps.isDisplayed(
+            "Проверяет, что отображается '${(element as BaseActions).getName()}'",
+            element
+        )
+    }
+
+    fun isDisplayed(element: ImageViewAssertions) {
         steps.isDisplayed(
             "Проверяет, что отображается '${(element as BaseActions).getName()}'",
             element
@@ -38,6 +47,20 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
     fun doesNotExist(element: BaseAssertions) {
         steps.doesNotExist(
             "Проверяет, что элемент '${(element as BaseActions).getName()}' отсутствует",
+            element
+        )
+    }
+
+    fun isDisplayed(element: KWebViewElement) {
+        steps.isDisplayed(
+            "Проверяет, что отображается '${element.getName()}'",
+            element
+        )
+    }
+
+    fun isDisabled(element: BaseAssertions) {
+        steps.isDisabled(
+            "Проверяет, что отключено '${(element as BaseActions).getName()}'",
             element
         )
     }

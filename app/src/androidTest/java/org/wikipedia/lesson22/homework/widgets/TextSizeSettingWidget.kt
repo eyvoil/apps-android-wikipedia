@@ -24,13 +24,13 @@ class TextSizeSettingWidget(builder: ViewBuilder.() -> Unit) :
     }
 
     val decreaseSizeButton by lazy {
-        KButton(matcher) {
+        KTextView(matcher) {
             withId(R.id.buttonDecreaseTextSize)
         }.name(withParent("Кнопка уменьшения текст"))
     }
 
     val increaseSizeButton by lazy {
-        KButton(matcher) {
+        KTextView(matcher) {
             withId(R.id.buttonIncreaseTextSize)
         }.name(withParent("Кнопка увеличения текст"))
     }
