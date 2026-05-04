@@ -11,7 +11,11 @@ import io.github.kakaocup.kakao.text.KTextView
 import io.github.kakaocup.kakao.text.TextViewAssertions
 import org.hamcrest.Matcher
 import org.wikipedia.R
+import org.wikipedia.lesson18.homework.ExploreNamedScreen.ExploreNamedScreen.cardsList
+import org.wikipedia.lesson18.homework.ExploreNamedScreen.TopReadNamedItem
 import org.wikipedia.lesson18.homework.NamedScreen
+import org.wikipedia.lesson18.homework.invokeByIndex
+import org.wikipedia.lesson18.homework.invokeWithText
 import org.wikipedia.lesson18.homework.name
 import org.wikipedia.lesson18.homework.withParent
 import org.wikipedia.onboarding.OnboardingPageView
@@ -61,6 +65,10 @@ object OnboardingNamedScreen : NamedScreen<OnboardingNamedScreen>() {
                 }
             ).name(withParent("Список языков"))
         }
+    }
+
+    fun addLanguageBlock(fnc: PagerItem.() -> Unit) {
+        pager.invokeByIndex(0, fnc)
     }
 
     val skipButton = KButton {

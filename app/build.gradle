@@ -176,8 +176,9 @@ dependencies {
 
     coreLibraryDesugaring libs.desugar.jdk.libs
 
-    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.6.0")
-    androidTestImplementation "com.kaspersky.android-components:kaspresso:1.6.0"
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.6.1")
+    androidTestImplementation "com.kaspersky.android-components:kaspresso:1.6.1"
+    androidTestImplementation "com.kaspersky.android-components:kaspresso-compose-support:1.6.1"
     implementation project(':analytics:testkitchen')
 
     implementation libs.kotlin.stdlib.jdk8

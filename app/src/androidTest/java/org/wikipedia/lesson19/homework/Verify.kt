@@ -1,5 +1,6 @@
 package org.wikipedia.lesson19.homework
 
+import io.github.kakaocup.compose.node.assertion.NodeAssertions
 import io.github.kakaocup.kakao.common.actions.BaseActions
 import io.github.kakaocup.kakao.common.assertions.BaseAssertions
 import io.github.kakaocup.kakao.image.ImageViewAssertions
@@ -63,5 +64,14 @@ class Verify(private val steps: StepDefinitions) : StepsDsl<Verify>() {
             "Проверяет, что отключено '${(element as BaseActions).getName()}'",
             element
         )
+    }
+
+    fun assertTrimmedTextIsEquals(element: NodeAssertions, expected: String){
+        steps.assertTrimmedTextIsEquals(
+            "Проверяет, что текст после обрезки пробелов совпадает с ожидаемым значением",
+            element,
+            expected
+        )
+
     }
 }
