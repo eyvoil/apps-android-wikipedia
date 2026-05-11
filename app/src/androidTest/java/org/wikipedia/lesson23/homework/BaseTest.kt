@@ -6,11 +6,16 @@ import com.kaspersky.components.composesupport.config.ComposeConfig
 import com.kaspersky.kaspresso.kaspresso.Kaspresso
 import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Rule
+import org.wikipedia.lesson26.homework.CustomTestRunWatcherInterceptor
 import org.wikipedia.main.MainActivity
 
 open class BaseTest : TestCase(
     Kaspresso.Builder.withForcedAllureSupport().apply {
         ComposeConfig.Builder.default(this) {}
+
+        testRunWatcherInterceptors.add(
+            CustomTestRunWatcherInterceptor()
+        )
     }
 ) {
 
