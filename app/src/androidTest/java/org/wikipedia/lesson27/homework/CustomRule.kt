@@ -15,7 +15,6 @@ class CustomRule : TestRule {
         Log.i("KASPRESSO", "Test Rule START")
         Log.i("KASPRESSO", "Test Rule description = ${description.annotations}")
 
-        //return SimpleStatement(base, description)
         return object : Statement() {
             override fun evaluate() {
                 val allureId = description?.getAnnotation<AllureId>(AllureId::class.java)?.value
